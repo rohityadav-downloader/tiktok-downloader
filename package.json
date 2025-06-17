@@ -4,7 +4,7 @@
 	"description": "To download tiktok videos",
 	"main": "src/main.js",
 	"scripts": {
-		"start": "npx playwright install && node src/main.js"
+		"start": "node src/main.js"
 	},
 	"keywords": [
 		"tiktok",
