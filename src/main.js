@@ -25,6 +25,8 @@ app.post('/', async (req, res) => {
         return res.sendStatus(200);
     }
 
+    let id3 = send_message(bot_token, user_id, 'Getting download link...');
+
     let video_url = await get_download_link(tiktok_link);
     if (!video_url) {
         send_message(bot_token, user_id, 'Download link not found. Please try again later.');
@@ -43,7 +45,7 @@ app.post('/', async (req, res) => {
         },
     }).then(() => {
         stopTyping();
-        delete_message(bot_token, user_id, [id1, id2]);
+        delete_message(bot_token, user_id, [id1, id2, id3]);
     }).catch((error) => {
         send_message(bot_token, user_id, error?.response?.data || error.message);
     }).finally(() => {
