@@ -22,7 +22,7 @@ app.post('/', async (req, res) => {
     let id3 = await send_message(token, user_id, 'Downloading Video...');
     await download(url, 'download.mp4');
     let stop_typing = keepTyping(token, user_id);
-    let id4 = await send_message(token, user_id, 'Video Downloaded! Sending...');
+    let id4 = await send_message(token, user_id, 'Download complete! Sending...');
     await send_video(token, user_id);
     await delete_message(token, user_id, [id1, id2, id3, id4]);
     stop_typing();
