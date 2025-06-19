@@ -4,7 +4,7 @@ import download_url from './tiktok.js';
 import express from 'express';
 const app = express();
 app.use(express.json());
-const token = '7880232410:AAEF1qZY7Mvz4xt-ibC-iF9nbG6pG4k7u58';
+const token = '7980104953:AAGkwteBiJcSngSbbllnFiQRqxeRA8SWNg8';
 app.get('/', (_, res) => {
     res.send('Hello, World!');
 });
