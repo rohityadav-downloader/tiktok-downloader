@@ -18,7 +18,7 @@ export default async function download_url(video_url) {
         const html = await res.text();
         const $ = cheerio.load(html);
         const urls = $('.tk-down-link a').toArray();
-        return urls[1].attribs.href;
+        return urls[0].attribs.href;
     }
     catch (err) {
         throw err;
