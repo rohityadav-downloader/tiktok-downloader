@@ -1,0 +1,30 @@
+{
+	"name": "tiktok-downloader-bot",
+	"version": "1.0.0",
+	"description": "A Telegram bot for downloading TikTok videos",
+	"main": "dist/main.js",
+	"scripts": {
+		"build": "npx tsc",
+		"start": "node dist/main.js",
+		"dev": "npx tsc && node dist/main.js",
+		"clean": "rmdir /s /q dist 2>nul || echo cleaned"
+	},
+	"keywords": [
+		"telegram",
+		"bot",
+		"tiktok",
+		"downloader",
+		"webhook",
+		"nodejs"
+	],
+	"author": "Rohit",
+	"license": "ISC",
+	"type": "module",
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "^24.3.0",
+		"typescript": "^5.9.2"
+	}
+}
