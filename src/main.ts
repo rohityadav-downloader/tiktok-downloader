@@ -26,13 +26,22 @@ async function handleRequest(
 			if (method === "POST") {
 				res.writeHead(200)
 				res.end()
+				let body: TelegramUpdate | null = null
 				try {
-					const body = (await getRequestBody(req)) as TelegramUpdate
+					body = (await getRequestBody(req)) as TelegramUpdate
 					const user_id = body.message.chat.id
-					const download_link = await get_download_url(body.message.text)
+					bot.send_message(user_id, "Searching for video...")
+					const messageText = body.message.text
+					const download_link = await get_download_url(messageText)
 					await bot.send_video(user_id, download_link)
 				} catch (error) {
-					// Silently handle errors to avoid blocking webhook
+					if (body?.message?.chat?.id) {
+						try {
+							const errorMsg = error instanceof Error ? error.message : "Failed to download video"
+							await bot.send_message(body.message.chat.id, `Error: ${errorMsg}`)
+						} catch {
+						}
+					}
 				}
 			} else {
 				res.writeHead(405)
