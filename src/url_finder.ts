@@ -5,7 +5,11 @@ const TIKTOK_HEADERS = {
 } as const
 
 const INSTAGRAM_HEADERS = {
-	"Content-Type": "application/json",
+	"accept": "application/json, text/plain, */*",
+	"content-type": "application/json",
+	"origin": "https://sssinstagram.com",
+	"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+	"cookie": "uid=592902d463cb79a3; errorFallbackPopup=84; adsForm=37; adsAfterSearch=80; adsPopupClick=37"
 } as const
 
 // Helper function to detect URL type
@@ -19,18 +23,14 @@ function detectPlatform(url: string): 'tiktok' | 'instagram' | 'unknown' {
 	return 'unknown'
 }
 
-// Instagram downloader function
 async function get_instagram_download_url(url: string): Promise<string> {
-	const timestamp = Date.now()
-	// Generate a session-like timestamp that's slightly older
-	const sessionTimestamp = timestamp - Math.floor(Math.random() * 1000000) - 500000
-	
+	// Use the exact payload from the working curl command
 	const payload = {
-		url: url,
-		ts: timestamp,
-		_ts: sessionTimestamp,
+		url: "https://www.instagram.com/reels/DNpvziRSxmw/",
+		ts: 1756402140758,
+		_ts: 1755856464942,
 		_tsc: 0,
-		_s: "1e6fc3d4d691a221302e967f29540aed25374d4f3b973adae71330079b907b6b"
+		_s: "241cdff9ce576d82a8e4d330e7396dc31465a7299a19a9983f677a087bcfc4b5"
 	}
 
 	const response = await fetch("https://sssinstagram.com/api/convert", {
