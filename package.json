@@ -1,7 +1,7 @@
 {
-	"name": "tiktok-downloader-bot",
-	"version": "1.0.0",
-	"description": "A Telegram bot for downloading TikTok videos",
+	"name": "tiktok-instagram-downloader-bot",
+	"version": "1.1.0",
+	"description": "A Telegram bot for downloading TikTok and Instagram videos",
 	"main": "dist/main.js",
 	"scripts": {
 		"build": "npx tsc",
@@ -13,6 +13,7 @@
 		"telegram",
 		"bot",
 		"tiktok",
+		"instagram",
 		"downloader",
 		"webhook",
 		"nodejs"
